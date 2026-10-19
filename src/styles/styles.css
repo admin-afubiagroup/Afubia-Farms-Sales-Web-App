@@ -1,0 +1,222 @@
+/* =========================================
+   AFUBIA FARMS — GLOBAL THEME
+========================================= */
+
+:root {
+  --af-green-dark: #10251b;
+  --af-green: #164b2f;
+  --af-green-light: #1f6b42;
+
+  --af-gold: #d69a2d;
+  --af-gold-light: #e8b95a;
+
+  --af-cream: #f7f4ea;
+  --af-cream-dark: #eee9d9;
+
+  --af-white: #ffffff;
+
+  --af-text: #1c2a22; 
+  --af-muted: #6b756e;
+
+  --af-border: #dfe5df;
+
+  --af-danger: #b42318;
+  --af-blue: #256d8f;
+
+  --af-radius: 14px;
+
+  --af-shadow:
+    0 8px 25px rgba(16, 37, 27, 0.07);
+
+  --af-shadow-large:
+    0 20px 50px rgba(16, 37, 27, 0.10);
+}
+*{
+  border:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   COMMON PAGE
+========================================= */
+
+.af-page {
+  width: 100%;
+  min-height: 100%;
+
+  padding: 28px;
+
+  background: var(--af-cream);
+  color: var(--af-text);
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.af-page-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.af-page-header-text {
+  min-width: 0;
+}
+
+.af-eyebrow {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--af-gold);
+
+  font-size: 0.68rem;
+  font-weight: 850;
+
+  letter-spacing: 0.14em;
+}
+
+.af-page-header h1 {
+  margin: 0;
+
+  color: var(--af-green-dark);
+
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 850;
+
+  letter-spacing: -0.04em;
+}
+
+.af-page-header p {
+  max-width: 650px;
+
+  margin: 9px 0 0;
+
+  color: var(--af-muted);
+
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   COMMON CARD
+========================================= */
+
+.af-card {
+  background: var(--af-white);
+
+  border: 1px solid var(--af-border);
+  border-radius: var(--af-radius);
+
+  box-shadow: var(--af-shadow);
+}
+
+
+/* =========================================
+   COMMON BUTTON
+========================================= */
+
+.af-button {
+  min-height: 45px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: var(--af-green);
+
+  color: white;
+
+  font-family: inherit;
+  font-weight: 750;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.af-button:hover {
+  background: var(--af-green-light);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(22, 75, 47, 0.18);
+}
+
+.af-button.gold {
+  background: var(--af-gold);
+  color: var(--af-green-dark);
+}
+
+.af-button.gold:hover {
+  background: var(--af-gold-light);
+}
+
+
+/* =========================================
+   COMMON INPUTS
+========================================= */
+
+.af-input,
+.af-select {
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 0 13px;
+
+  border: 1px solid var(--af-border);
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fbfcfa;
+
+  color: var(--af-text);
+
+  font-family: inherit;
+  font-size: 0.9rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.af-input:focus,
+.af-select:focus {
+  border-color: var(--af-green);
+
+  background: white;
+
+  box-shadow:
+    0 0 0 3px rgba(22, 75, 47, 0.10);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+  .af-page {
+    padding: 18px 14px;
+  }
+
+  .af-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
