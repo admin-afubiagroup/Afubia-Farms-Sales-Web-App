@@ -1,0 +1,4 @@
+Validation performed for the direct-Firestore change:
+- JavaScript syntax checks passed for businessFirestore.js, inventoryValidation.js, firestore.rules.test.mjs, and functions/index.js.
+- `npm test` passed: 19 inventory tests, 0 failures.
+- Production Vite build and Firestore emulator rules tests could not be run in this container because project dependencies were not installed; npm ci timed out. Run npm ci locally, then npm run build and npm run test:rules before release.

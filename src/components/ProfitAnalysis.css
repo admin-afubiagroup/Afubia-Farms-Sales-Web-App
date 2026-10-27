@@ -1,0 +1,2037 @@
+/* =========================================================
+   AFUBIA FARMS
+   PROFIT ANALYSIS
+   Modern • Clean • Responsive • Business Dashboard
+========================================================= */
+
+:root {
+  --profit-green-dark: #0b3d2e;
+  --profit-green: #0f7a4a;
+  --profit-green-light: #2f8f83;
+  --profit-green-soft: #eaf5ef;
+
+  --profit-blue: #1e4e8c;
+  --profit-blue-soft: #edf3fa;
+
+  --profit-gold: #b8862c;
+  --profit-gold-light: #d9a441;
+  --profit-gold-soft: #fff7e5;
+
+  --profit-red: #a4493c;
+  --profit-red-soft: #fff0ed;
+
+  --profit-bg: #f4efe3;
+  --profit-card: #ffffff;
+  --profit-soft: #f8f6ef;
+
+  --profit-text: #18352a;
+  --profit-muted: #777267;
+  --profit-border: rgba(11, 61, 46, 0.09);
+
+  --profit-shadow:
+    0 10px 30px rgba(11, 61, 46, 0.06);
+
+  --profit-shadow-hover:
+    0 18px 38px rgba(11, 61, 46, 0.11);
+
+  --profit-radius: 20px;
+}
+
+/* =========================================================
+   GLOBAL CONTAINER
+========================================================= */
+
+.profit-container {
+  width: 100%;
+  min-height: 100%;
+  padding: 2rem;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(184, 134, 44, 0.08),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(11, 61, 46, 0.05),
+      transparent 30%
+    ),
+    var(--profit-bg);
+
+  color: var(--profit-text);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.profit-header {
+  width: 100%;
+  max-width: 1450px;
+  min-height: 210px;
+
+  margin: 0 auto 1.5rem;
+  padding: 2.2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(217, 164, 65, 0.15),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #0b3d2e,
+      #082d22
+    );
+
+  border: 1px solid rgba(184, 134, 44, 0.3);
+  border-radius: 26px;
+
+  box-shadow:
+    0 22px 50px rgba(11, 61, 46, 0.16);
+
+  color: #ffffff;
+}
+
+.profit-header::before {
+  content: "";
+
+  position: absolute;
+
+  width: 260px;
+  height: 260px;
+
+  right: -100px;
+  top: -130px;
+
+  border: 1px solid rgba(217, 164, 65, 0.12);
+  border-radius: 50%;
+}
+
+.profit-header::after {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  right: 90px;
+  bottom: -170px;
+
+  border: 1px solid rgba(217, 164, 65, 0.1);
+  border-radius: 50%;
+}
+
+.profit-header > div:first-child {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+}
+
+.profit-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 0.55rem;
+
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color: var(--profit-gold-light);
+}
+
+.profit-header h1 {
+  margin: 0;
+
+  font-size: clamp(
+    2.1rem,
+    4vw,
+    3.5rem
+  );
+
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+
+.profit-header p {
+  max-width: 720px;
+
+  margin: 1rem 0 0;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 0.96rem;
+  line-height: 1.75;
+}
+
+/* =========================================================
+   LIVE DATA
+========================================================= */
+
+.profit-live {
+  position: relative;
+  z-index: 3;
+
+  min-width: 220px;
+
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  padding: 1rem 1.15rem;
+
+  background: rgba(255, 255, 255, 0.075);
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+
+  border-radius: 16px;
+
+  backdrop-filter: blur(12px);
+}
+
+.profit-live-dot {
+  width: 10px;
+  height: 10px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #6acb8d;
+
+  box-shadow:
+    0 0 0 5px rgba(106, 203, 141, 0.11),
+    0 0 15px rgba(106, 203, 141, 0.32);
+}
+
+.profit-live strong {
+  display: block;
+
+  font-size: 0.7rem;
+  letter-spacing: 0.09em;
+
+  color: #ffffff;
+}
+
+.profit-live small {
+  display: block;
+
+  margin-top: 0.25rem;
+
+  color: rgba(255, 255, 255, 0.6);
+
+  font-size: 0.72rem;
+}
+
+/* =========================================================
+   ERROR / DATA NOTICE
+========================================================= */
+
+.profit-error {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1rem 1.2rem;
+
+  background: #fff8e8;
+
+  border: 1px solid rgba(184, 134, 44, 0.35);
+
+  border-radius: 16px;
+
+  color: #533d13;
+}
+
+.profit-error strong {
+  display: block;
+
+  font-size: 0.85rem;
+}
+
+.profit-error span {
+  flex: 1;
+
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.profit-error button {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  border-radius: 10px;
+
+  background: var(--profit-green-dark);
+
+  color: #ffffff;
+
+  font-size: 1.3rem;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profit-error button:hover {
+  background: var(--profit-green);
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   PERIOD SELECTOR
+========================================================= */
+
+.period-selector {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  padding: 1.25rem 1.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1.5rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--profit-border);
+
+  border-radius: 18px;
+
+  box-shadow: var(--profit-shadow);
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 0.3rem;
+
+  font-size: 0.65rem;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  color: var(--profit-gold);
+}
+
+.period-selector h2 {
+  margin: 0;
+
+  font-size: 1.35rem;
+
+  color: var(--profit-green-dark);
+}
+
+.period-buttons {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.45rem;
+}
+
+.period-buttons button {
+  padding: 0.65rem 0.9rem;
+
+  border: 1px solid rgba(11, 61, 46, 0.1);
+
+  border-radius: 10px;
+
+  background: var(--profit-soft);
+
+  color: var(--profit-muted);
+
+  font-size: 0.75rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.period-buttons button:hover {
+  background: #ffffff;
+
+  border-color: rgba(184, 134, 44, 0.35);
+
+  color: var(--profit-green-dark);
+
+  transform: translateY(-1px);
+}
+
+.period-buttons button.active {
+  background: var(--profit-green-dark);
+
+  border-color: var(--profit-green-dark);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 5px 14px rgba(11, 61, 46, 0.15);
+}
+
+/* =========================================================
+   FINANCIAL CARDS
+========================================================= */
+
+.financial-cards {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+.financial-card {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 190px;
+
+  padding: 1.45rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #faf8f1
+    );
+
+  border: 1px solid var(--profit-border);
+
+  border-radius: 21px;
+
+  box-shadow: var(--profit-shadow);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.financial-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: var(--profit-green-dark);
+}
+
+.financial-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(184, 134, 44, 0.2);
+
+  box-shadow: var(--profit-shadow-hover);
+}
+
+.sales-card::before {
+  background: var(--profit-gold);
+}
+
+.expense-card::before {
+  background: var(--profit-blue);
+}
+
+.profit-card-positive::before {
+  background: var(--profit-green);
+}
+
+.profit-card-negative::before {
+  background: var(--profit-red);
+}
+
+.financial-card-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+}
+
+.financial-card-heading > span {
+  font-size: 0.67rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color: var(--profit-muted);
+}
+
+.financial-icon {
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  background: #f1eee5;
+
+  color: var(--profit-green-dark);
+
+  font-size: 0.89rem;
+  font-weight: 700;
+}
+
+.sales-card .financial-icon {
+  background: var(--profit-gold-soft);
+  color: var(--profit-gold);
+}
+
+.expense-card .financial-icon {
+  background: var(--profit-blue-soft);
+  color: var(--profit-blue);
+}
+
+.profit-card-positive .financial-icon {
+  background: var(--profit-green-soft);
+  color: var(--profit-green);
+}
+
+.profit-card-negative .financial-icon {
+  background: var(--profit-red-soft);
+  color: var(--profit-red);
+}
+
+.financial-card > strong {
+  display: block;
+
+  margin-top: 1.15rem;
+
+  font-size: clamp(
+    1rem,
+    3vw,
+    1.4rem
+  );
+
+  line-height: 1.1;
+
+  color: var(--profit-green-dark);
+}
+
+.profit-card-positive > strong {
+  color: #315b47;
+}
+
+.profit-card-negative > strong {
+  color: var(--profit-red);
+}
+
+.financial-card p {
+  max-width: 320px;
+
+  margin: 0.65rem 0 0;
+
+  color: var(--profit-muted);
+
+  font-size: 0.82rem;
+
+  line-height: 1.55;
+}
+
+.financial-card small {
+  display: block;
+
+  margin-top: 0.65rem;
+
+  color: #8a8579;
+
+  font-size: 0.7rem;
+}
+
+/* =========================================================
+   OVERVIEW GRID
+========================================================= */
+
+.overview-grid {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 0.9rem;
+}
+
+.overview-card {
+  padding: 1.15rem;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  border: 1px solid var(--profit-border);
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 6px 20px rgba(11, 61, 46, 0.035);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.overview-card:hover {
+  transform: translateY(-2px);
+
+  background: #ffffff;
+}
+
+.overview-card > span {
+  display: block;
+
+  font-size: 0.64rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  color: var(--profit-muted);
+}
+
+.overview-card > strong {
+  display: block;
+
+  margin-top: 0.5rem;
+
+  font-size: 1.55rem;
+
+  color: var(--profit-green-dark);
+}
+
+.overview-card > small {
+  display: block;
+
+  margin-top: 0.3rem;
+
+  color: #8a8579;
+
+  font-size: 0.7rem;
+
+  line-height: 1.45;
+}
+
+/* =========================================================
+   PROFIT EXPLANATION
+========================================================= */
+
+.profit-explanation {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  padding: 1.4rem 1.5rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8e3d6,
+      #f1eee5
+    );
+
+  border: 1px solid rgba(184, 134, 44, 0.18);
+
+  border-radius: 20px;
+}
+
+.explanation-icon {
+  width: 46px;
+  height: 46px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 14px;
+
+  background: var(--profit-green-dark);
+
+  color: var(--profit-gold-light);
+
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.profit-explanation h2 {
+  margin: 0;
+
+  color: var(--profit-green-dark);
+
+  font-size: clamp(
+    1rem,
+    2vw,
+    1.35rem
+  );
+
+  line-height: 1.5;
+}
+
+.profit-explanation h2 strong {
+  color: var(--profit-green);
+}
+
+.profit-explanation p {
+  max-width: 850px;
+
+  margin: 0.45rem 0 0;
+
+  color: var(--profit-muted);
+
+  font-size: 0.8rem;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   GENERAL SECTION
+========================================================= */
+
+.profit-section {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  padding: 1.5rem;
+
+  background: rgba(255, 255, 255, 0.94);
+
+  border: 1px solid var(--profit-border);
+
+  border-radius: 22px;
+
+  box-shadow: var(--profit-shadow);
+}
+
+.section-heading {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  margin-bottom: 1.2rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: 1.35rem;
+
+  color: var(--profit-green-dark);
+}
+
+.section-heading p {
+  margin: 0.35rem 0 0;
+
+  color: var(--profit-muted);
+
+  font-size: 0.82rem;
+
+  line-height: 1.5;
+}
+
+.section-heading.compact {
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   PRODUCT ANALYSIS
+========================================================= */
+
+.product-analysis-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.65rem;
+}
+
+.product-analysis-row {
+  min-height: 82px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 0.85rem 1rem;
+
+  background: var(--profit-soft);
+
+  border: 1px solid rgba(11, 61, 46, 0.07);
+
+  border-radius: 16px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.product-analysis-row:hover {
+  transform: translateY(-2px);
+
+  background: #ffffff;
+
+  border-color: rgba(184, 134, 44, 0.3);
+}
+
+.product-analysis-left {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.9rem;
+}
+
+.product-analysis-image {
+  width: 58px;
+  height: 58px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  background: #e8e3d6;
+}
+
+.product-analysis-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.product-analysis-row:hover
+.product-analysis-image img {
+  transform: scale(1.05);
+}
+
+.product-analysis-left strong {
+  display: block;
+
+  color: var(--profit-green-dark);
+
+  font-size: 0.88rem;
+}
+
+.product-analysis-left span {
+  display: block;
+
+  margin-top: 0.25rem;
+
+  color: var(--profit-muted);
+
+  font-size: 0.7rem;
+}
+
+.product-analysis-money {
+  flex-shrink: 0;
+
+  color: var(--profit-green);
+
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   DAILY TABLE
+========================================================= */
+
+.daily-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(11, 61, 46, 0.07);
+
+  border-radius: 15px;
+
+  background: #ffffff;
+}
+
+.daily-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 650px;
+}
+
+.daily-table thead {
+  background: var(--profit-green-dark);
+}
+
+.daily-table th {
+  padding: 0.9rem 1rem;
+
+  text-align: left;
+
+  color: #ffffff;
+
+  font-size: 0.66rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+.daily-table td {
+  padding: 0.9rem 1rem;
+
+  border-bottom: 1px solid rgba(11, 61, 46, 0.07);
+
+  color: var(--profit-text);
+
+  font-size: 0.78rem;
+
+  white-space: nowrap;
+}
+
+.daily-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.daily-table tbody tr:hover {
+  background: #faf9f5;
+}
+
+.daily-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.daily-table td strong {
+  color: var(--profit-green-dark);
+}
+
+.text-profit {
+  color: var(--profit-green) !important;
+}
+
+.text-loss {
+  color: var(--profit-red) !important;
+}
+
+/* =========================================================
+   RECENT ACTIVITY COLUMNS
+========================================================= */
+
+.activity-columns {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1rem;
+}
+
+.activity-columns .profit-section {
+  width: 100%;
+
+  margin: 0;
+}
+
+/* =========================================================
+   SIMPLE LIST
+========================================================= */
+
+.simple-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.65rem;
+}
+
+.simple-list-row {
+  min-height: 70px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding: 0.85rem 0.95rem;
+
+  background: var(--profit-soft);
+
+  border: 1px solid rgba(11, 61, 46, 0.07);
+
+  border-radius: 14px;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.simple-list-row:hover {
+  transform: translateX(2px);
+
+  background: #ffffff;
+}
+
+.simple-list-row > div {
+  min-width: 0;
+}
+
+.simple-list-row > div strong {
+  display: block;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--profit-green-dark);
+
+  font-size: 0.82rem;
+}
+
+.simple-list-row > div span {
+  display: block;
+
+  margin-top: 0.25rem;
+
+  color: var(--profit-muted);
+
+  font-size: 0.68rem;
+}
+
+.sale-money {
+  flex-shrink: 0;
+
+  color: var(--profit-green);
+
+  font-size: 0.88rem;
+}
+
+.expense-money {
+  flex-shrink: 0;
+
+  color: var(--profit-blue);
+
+  font-size: 0.88rem;
+}
+
+/* =========================================================
+   PERIOD SUMMARY
+========================================================= */
+
+.period-summary {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  padding: 1.5rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f8f6ef
+    );
+
+  border: 1px solid var(--profit-border);
+
+  border-radius: 22px;
+
+  box-shadow: var(--profit-shadow);
+}
+
+.period-summary-header {
+  margin-bottom: 1.15rem;
+}
+
+.period-summary-header h2 {
+  margin: 0;
+
+  color: var(--profit-green-dark);
+
+  font-size: 1.35rem;
+}
+
+.period-summary-header p {
+  margin: 0.35rem 0 0;
+
+  color: var(--profit-muted);
+
+  font-size: 0.82rem;
+}
+
+.period-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 0.8rem;
+}
+
+.period-summary-card {
+  position: relative;
+
+  padding: 1.1rem;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(11, 61, 46, 0.08);
+
+  border-radius: 16px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.period-summary-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(184, 134, 44, 0.35);
+
+  box-shadow:
+    0 10px 24px rgba(11, 61, 46, 0.08);
+}
+
+.period-summary-card.selected {
+  background: var(--profit-green-dark);
+
+  border-color: var(--profit-green-dark);
+
+  box-shadow:
+    0 10px 25px rgba(11, 61, 46, 0.15);
+}
+
+.period-summary-card > span {
+  display: block;
+
+  font-size: 0.64rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  color: var(--profit-muted);
+}
+
+.period-summary-card.selected > span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.period-summary-card > strong {
+  display: block;
+
+  margin-top: 0.5rem;
+
+  font-size: 1rem;
+}
+
+.period-summary-card > small {
+  display: block;
+
+  margin-top: 0.25rem;
+
+  color: var(--profit-muted);
+
+  font-size: 0.68rem;
+}
+
+.period-summary-card.selected > small {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================================
+   EXPLANATION / NOTE
+========================================================= */
+
+.profit-note {
+  max-width: 1450px;
+
+  margin: 0 auto 1.5rem;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 1rem;
+
+  padding: 1.35rem 1.45rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8e3d6,
+      #f1eee5
+    );
+
+  border: 1px solid rgba(184, 134, 44, 0.2);
+
+  border-radius: 19px;
+}
+
+.note-icon {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: var(--profit-green-dark);
+
+  color: var(--profit-gold-light);
+
+  font-weight: 900;
+
+  font-size: 1.1rem;
+}
+
+.profit-note > div:last-child {
+  min-width: 0;
+}
+
+.profit-note > div:last-child > strong {
+  display: block;
+
+  color: var(--profit-green-dark);
+
+  font-size: 0.9rem;
+}
+
+.profit-note p {
+  margin: 0.45rem 0 0;
+
+  color: #716e64;
+
+  font-size: 0.8rem;
+
+  line-height: 1.65;
+}
+
+.profit-note p strong {
+  color: var(--profit-green-dark);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.profit-footer {
+  max-width: 1450px;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 0.6rem;
+
+  padding: 1rem 0.5rem 1.5rem;
+
+  color: var(--profit-muted);
+
+  font-size: 0.7rem;
+}
+
+.profit-footer .profit-live-dot {
+  width: 7px;
+  height: 7px;
+
+  box-shadow: none;
+}
+
+.profit-footer span:not(.profit-live-dot) {
+  white-space: nowrap;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.profit-empty {
+  padding: 2rem;
+
+  text-align: center;
+
+  background: var(--profit-soft);
+
+  border: 1px dashed rgba(11, 61, 46, 0.18);
+
+  border-radius: 15px;
+
+  color: var(--profit-muted);
+
+  font-size: 0.85rem;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.profit-loading {
+  min-height: 70vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+
+  text-align: center;
+
+  color: var(--profit-text);
+}
+
+.profit-loading h2 {
+  margin: 0.8rem 0 0;
+
+  color: var(--profit-green-dark);
+
+  font-size: 1.4rem;
+}
+
+.profit-loading p {
+  max-width: 450px;
+
+  margin: 0.45rem 0 0;
+
+  color: var(--profit-muted);
+
+  font-size: 0.85rem;
+
+  line-height: 1.6;
+}
+
+.profit-loading-label {
+  margin-top: 0.8rem;
+
+  color: var(--profit-gold);
+
+  font-size: 0.68rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+}
+
+.profit-spinner {
+  width: 48px;
+  height: 48px;
+
+  border: 4px solid #e8e3d6;
+
+  border-top-color: var(--profit-gold);
+
+  border-radius: 50%;
+
+  animation:
+    profit-spin 0.8s linear infinite;
+}
+
+@keyframes profit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+========================================================= */
+
+.period-buttons button:focus-visible,
+.period-summary-card:focus-visible,
+.profit-error button:focus-visible {
+  outline: 3px solid rgba(217, 164, 65, 0.35);
+
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .profit-container {
+    padding: 1.5rem;
+  }
+
+  .overview-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .period-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .profit-header {
+    min-height: auto;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 1.8rem;
+  }
+
+  .profit-live {
+    width: 100%;
+  }
+
+  .financial-cards {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .financial-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .activity-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .period-selector {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .period-buttons {
+    width: 100%;
+  }
+
+  .period-buttons button {
+    flex: 1;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+  .profit-container {
+    padding: 0.75rem;
+  }
+
+  .profit-header {
+    padding: 1.4rem;
+
+    border-radius: 19px;
+  }
+
+  .profit-header h1 {
+    font-size: 2rem;
+  }
+
+  .profit-header p {
+    font-size: 0.82rem;
+  }
+
+  .profit-live {
+    min-width: 0;
+
+    padding: 0.85rem;
+  }
+
+  .profit-error {
+    align-items: flex-start;
+
+    padding: 0.9rem;
+  }
+
+  .profit-error span {
+    font-size: 0.75rem;
+  }
+
+  .period-selector {
+    padding: 1rem;
+
+    border-radius: 16px;
+  }
+
+  .period-selector h2 {
+    font-size: 1.15rem;
+  }
+
+  .period-buttons {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .period-buttons button {
+    width: 100%;
+  }
+
+  .financial-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .financial-card:last-child {
+    grid-column: auto;
+  }
+
+  .financial-card {
+    min-height: 165px;
+
+    padding: 1.15rem;
+  }
+
+  .financial-card > strong {
+    font-size: 1.55rem;
+  }
+
+  .overview-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 0.65rem;
+  }
+
+  .overview-card {
+    padding: 0.95rem;
+  }
+
+  .overview-card > strong {
+    font-size: 1.3rem;
+  }
+
+  .profit-explanation {
+    padding: 1rem;
+
+    flex-direction: column;
+  }
+
+  .profit-section {
+    padding: 1rem;
+
+    border-radius: 18px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .product-analysis-row {
+    padding: 0.75rem;
+
+    align-items: center;
+  }
+
+  .product-analysis-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .product-analysis-left strong {
+    font-size: 0.78rem;
+  }
+
+  .product-analysis-left span {
+    font-size: 0.62rem;
+  }
+
+  .product-analysis-money {
+    font-size: 0.78rem;
+  }
+
+  .daily-table {
+    min-width: 620px;
+  }
+
+  .simple-list-row {
+    min-height: 64px;
+
+    padding: 0.75rem;
+  }
+
+  .simple-list-row > div strong {
+    max-width: 170px;
+
+    font-size: 0.76rem;
+  }
+
+  .simple-list-row > div span {
+    font-size: 0.61rem;
+  }
+
+  .sale-money,
+  .expense-money {
+    font-size: 0.76rem;
+  }
+
+  .period-summary {
+    padding: 1rem;
+  }
+
+  .period-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .period-summary-card {
+    padding: 0.9rem;
+  }
+
+  .period-summary-card > strong {
+    font-size: 1rem;
+  }
+
+  .profit-note {
+    padding: 1rem;
+  }
+
+  .profit-note p {
+    font-size: 0.74rem;
+  }
+
+  .profit-footer {
+    justify-content: flex-start;
+
+    padding-left: 0.25rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+  .profit-container {
+    padding: 0.55rem;
+  }
+
+  .profit-header {
+    padding: 1.15rem;
+
+    border-radius: 17px;
+  }
+
+  .profit-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .profit-eyebrow {
+    font-size: 0.58rem;
+  }
+
+  .period-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .period-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-analysis-left {
+    gap: 0.6rem;
+  }
+
+  .product-analysis-image {
+    width: 44px;
+    height: 44px;
+  }
+
+  .product-analysis-money {
+    font-size: 0.7rem;
+  }
+
+  .simple-list-row {
+    align-items: flex-start;
+  }
+
+  .simple-list-row > div strong {
+    max-width: 135px;
+  }
+
+  .sale-money,
+  .expense-money {
+    font-size: 0.7rem;
+  }
+
+  .profit-footer {
+    gap: 0.4rem;
+
+    font-size: 0.62rem;
+  }
+}
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 350px) {
+  .financial-card {
+    padding: 1rem;
+  }
+
+  .financial-card > strong {
+    font-size: 1.35rem;
+  }
+
+  .product-analysis-row {
+    gap: 0.5rem;
+  }
+
+  .product-analysis-left span {
+    display: none;
+  }
+
+  .product-analysis-money {
+    font-size: 0.65rem;
+  }
+}
+
+/* =========================================================
+   PRINT
+========================================================= */
+
+@media print {
+  .profit-container {
+    padding: 0;
+
+    background: #ffffff;
+  }
+
+  .profit-header,
+  .financial-card,
+  .overview-card,
+  .profit-section,
+  .profit-explanation,
+  .period-summary,
+  .profit-note {
+    box-shadow: none;
+
+    break-inside: avoid;
+  }
+
+  .period-buttons,
+  .profit-error button {
+    display: none;
+  }
+
+  .profit-header {
+    color: #000000;
+
+    background: #ffffff;
+
+    border: 1px solid #ddd;
+  }
+
+  .profit-header h1 {
+    color: #000000;
+  }
+
+  .profit-header p {
+    color: #555555;
+  }
+
+  .profit-live {
+    background: #ffffff;
+
+    border: 1px solid #ddd;
+  }
+
+  .profit-live strong {
+    color: #000000;
+  }
+
+  .profit-live small {
+    color: #555555;
+  }
+
+  .daily-table thead {
+    background: #eeeeee;
+  }
+
+  .daily-table th {
+    color: #000000;
+  }
+
+  .profit-footer {
+    color: #555555;
+  }
+}
+
+/* =========================================================
+   EXPANDABLE PRODUCT, SALES AND EXPENSE LISTS
+========================================================= */
+
+.profit-expand-button {
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.8rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+
+  border: 1px solid rgba(11, 61, 46, 0.12);
+  border-radius: 12px;
+
+  background: #f8f6ef;
+  color: #0b3d2e;
+
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.profit-expand-button:hover {
+  background: #eaf5ef;
+  border-color: #0f7a4a;
+  color: #0f7a4a;
+}
+
+.profit-expand-button:active {
+  transform: scale(0.99);
+}
+
+.profit-expand-button:focus-visible {
+  outline: 3px solid rgba(217, 164, 65, 0.45);
+  outline-offset: 3px;
+}
+
+.profit-expand-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.05rem;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.profit-expand-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 650px) {
+  .profit-expand-button {
+    padding: 0.75rem;
+    font-size: 0.74rem;
+  }
+}
+
+@media print {
+  .profit-expand-button {
+    display: none;
+  }
+}
+
+
+.profit-branch-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.75rem 0;
+  color: #0b3d2e;
+  font-weight: 700;
+}
+.profit-branch-filter select {
+  max-width: 100%;
+  border: 1px solid #cbded2;
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  background: #fff;
+  color: #173b2c;
+  font: inherit;
+}
+
+.profit-branch-review-note { margin: 12px 0; padding: 12px 15px; border: 1px solid #ead7a9; border-radius: 12px; background: #fff9e9; color: #6e5114; font-size: .84rem; line-height: 1.55; }
+
+
+/* Refined accessible expand/collapse chevron for long record lists. */
+.profit-expand-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 42px;
+  max-width: 100%;
+  padding: 9px 14px;
+  border: 1px solid #c9dfd1;
+  border-radius: 999px;
+  background: #f4faf6;
+  color: #0f6542;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.profit-expand-button:hover {
+  border-color: #0f7a4a;
+  background: #e9f5ed;
+}
+
+.profit-expand-arrow {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  flex: 0 0 25px;
+  border-radius: 50%;
+  background: #e0f0e6;
+  color: #0f6542;
+  font-size: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.profit-expand-arrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.profit-expand-arrow.expanded {
+  background: #0f7a4a;
+  color: #fff;
+  transform: rotate(180deg);
+}
+
+.profit-expand-button:focus-visible {
+  outline: 3px solid rgba(30, 78, 140, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .profit-expand-button {
+    width: 100%;
+    font-size: 0.82rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profit-expand-arrow { transition: none; }
+}

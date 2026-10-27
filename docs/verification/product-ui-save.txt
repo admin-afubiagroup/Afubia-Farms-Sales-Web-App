@@ -1,0 +1,1 @@
+Product creation through actual UI: confirmed saved; local-image default accepted.

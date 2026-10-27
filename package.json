@@ -1,0 +1,51 @@
+{
+    "name": "af-sales-app",
+    "private": true,
+    "version": "2.0.0",
+    "type": "module",
+    "overrides": {
+        "@grpc/grpc-js": "^1.14.6",
+        "uuid": "^11.1.1"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint .",
+        "preview": "vite preview",
+        "test": "node --test functions/test/*.test.js",
+        "test:rules": "firebase emulators:exec --only firestore --project demo-afubia \"node tests/firestore.rules.test.mjs\"",
+        "test:integration": "firebase emulators:exec --only auth,firestore,functions --project demo-afubia \"node tests/business.integration.test.mjs\"",
+        "tailwind:init": "tailwindcss init -p"
+    },
+    "dependencies": {
+        "axios": "^1.20.0",
+        "dotenv": "^17.4.2",
+        "firebase": "^12.19.0",
+        "firebase-functions": "^7.4.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-icons": "^5.7.0",
+        "react-router-dom": "^7.18.3",
+        "react-speech-recognition": "^4.0.1",
+        "react-toastify": "^11.1.0",
+        "recharts": "^3.10.1",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.5",
+        "@firebase/rules-unit-testing": "^5.0.0",
+        "@types/react": "^19.2.18",
+        "@types/react-dom": "^19.2.4",
+        "@vitejs/plugin-react": "^4.7.0",
+        "autoprefixer": "^10.5.6",
+        "eslint": "^9.39.5",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "eslint-plugin-react-refresh": "^0.5.4",
+        "firebase-admin": "^13.0.0",
+        "firebase-tools": "^14.0.0",
+        "globals": "^17.11.0",
+        "postcss": "^8.5.28",
+        "tailwindcss": "^4.3.3",
+        "vite": "^6.4.5"
+    }
+}

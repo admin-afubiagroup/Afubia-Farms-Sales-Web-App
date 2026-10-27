@@ -1,0 +1,24 @@
+
+> af-sales-app@2.0.0 build
+> vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 696 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                              0.84 kB │ gzip:   0.43 kB
+dist/assets/kuliKuli-xg-KhKG9.jpg            6.06 kB
+dist/assets/honey-B5CocH1U.jpg               9.31 kB
+dist/assets/oil_containers-DGhwVo3Y.jpg     14.78 kB
+dist/assets/palm_oil_turning-BFXjIaJk.jpg   21.65 kB
+dist/assets/index-BfiSFOCU.css             212.14 kB │ gzip:  37.40 kB
+dist/assets/charts-CLe4Mhv0.js             445.41 kB │ gzip: 127.19 kB
+dist/assets/index-D_Cc6CLy.js              498.83 kB │ gzip: 143.59 kB
+dist/assets/firebase-dMr2dfl7.js           760.09 kB │ gzip: 184.41 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 5.08s

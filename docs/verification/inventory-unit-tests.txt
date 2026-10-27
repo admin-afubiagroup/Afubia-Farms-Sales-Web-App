@@ -1,0 +1,109 @@
+
+> af-sales-app@2.0.0 test
+> node --test functions/test/*.test.js
+
+TAP version 13
+# Subtest: opening stock and sales deduct matching litres and packages
+ok 1 - opening stock and sales deduct matching litres and packages
+  ---
+  duration_ms: 2.724236
+  ...
+# Subtest: sold-out product cannot be sold
+ok 2 - sold-out product cannot be sold
+  ---
+  duration_ms: 0.557194
+  ...
+# Subtest: sale exceeding available stock is rejected
+ok 3 - sale exceeding available stock is rejected
+  ---
+  duration_ms: 0.250779
+  ...
+# Subtest: exact remaining quantity can be sold
+ok 4 - exact remaining quantity can be sold
+  ---
+  duration_ms: 0.182821
+  ...
+# Subtest: second sale cannot reuse stock consumed by first
+ok 5 - second sale cannot reuse stock consumed by first
+  ---
+  duration_ms: 0.236491
+  ...
+# Subtest: correct litres but wrong package size is blocked
+ok 6 - correct litres but wrong package size is blocked
+  ---
+  duration_ms: 0.277256
+  ...
+# Subtest: turning consumes exactly one keg and matching containers
+ok 7 - turning consumes exactly one keg and matching containers
+  ---
+  duration_ms: 0.295979
+  ...
+# Subtest: missing containers prevent turning
+ok 8 - missing containers prevent turning
+  ---
+  duration_ms: 0.138412
+  ...
+# Subtest: missing kegs prevent turning
+ok 9 - missing kegs prevent turning
+  ---
+  duration_ms: 0.278103
+  ...
+# Subtest: over 27 usable litres per keg is blocked
+ok 10 - over 27 usable litres per keg is blocked
+  ---
+  duration_ms: 0.277104
+  ...
+# Subtest: fractional or negative packaging counts are blocked
+ok 11 - fractional or negative packaging counts are blocked
+  ---
+  duration_ms: 0.174529
+  ...
+# Subtest: pending materials never increase stock
+ok 12 - pending materials never increase stock
+  ---
+  duration_ms: 0.106438
+  ...
+# Subtest: cancelled records do not affect inventory
+ok 13 - cancelled records do not affect inventory
+  ---
+  duration_ms: 0.113648
+  ...
+# Subtest: honey and kuli-kuli never deduct palm oil
+ok 14 - honey and kuli-kuli never deduct palm oil
+  ---
+  duration_ms: 0.214638
+  ...
+# Subtest: caps and labels are not treated as empty containers
+ok 15 - caps and labels are not treated as empty containers
+  ---
+  duration_ms: 0.250767
+  ...
+# Subtest: raw keg sale consumes kegs, not packaged litres
+ok 16 - raw keg sale consumes kegs, not packaged litres
+  ---
+  duration_ms: 0.217823
+  ...
+# Subtest: legacy snake-case categories resolve correctly
+ok 17 - legacy snake-case categories resolve correctly
+  ---
+  duration_ms: 0.126542
+  ...
+# Subtest: package identity resolves all supported sizes
+ok 18 - package identity resolves all supported sizes
+  ---
+  duration_ms: 1.220314
+  ...
+# Subtest: Other products use product-specific unit balances
+ok 19 - Other products use product-specific unit balances
+  ---
+  duration_ms: 0.342685
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 87.512206

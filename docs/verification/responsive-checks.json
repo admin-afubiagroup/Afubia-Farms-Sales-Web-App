@@ -1,0 +1,205 @@
+{
+  "checks": [
+    {
+      "route": "/admin",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/products",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/products",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/products",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/products",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/materials",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/materials",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/materials",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/materials",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/shop-stock",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/shop-stock",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/shop-stock",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/shop-stock",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/reports",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/reports",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/reports",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/reports",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/profit",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/profit",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/profit",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/profit",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/admin/stock",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/admin/stock",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/admin/stock",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/admin/stock",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/dashboard",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/dashboard",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/dashboard",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/dashboard",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/sales",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/sales",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/sales",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/sales",
+      "width": 1440,
+      "overflow": false
+    },
+    {
+      "route": "/conversion",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/conversion",
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "route": "/conversion",
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "route": "/conversion",
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "page_errors": []
+}

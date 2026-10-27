@@ -1,0 +1,636 @@
+
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =====================================================
+    // 1. AUTHENTICATION AND USER PROFILE HELPERS
+    // =====================================================
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isSelf(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function hasUserProfile() {
+      return signedIn()
+        && exists(
+          /databases/$(database)/documents/users/$(request.auth.uid)
+        );
+    }
+
+    function userProfile() {
+      return get(
+        /databases/$(database)/documents/users/$(request.auth.uid)
+      ).data;
+    }
+
+    function activeUser() {
+      return hasUserProfile()
+        && userProfile().get("active", true) == true;
+    }
+
+    function isAdmin() {
+      return activeUser()
+        && (
+          userProfile().get("role", "") in [
+            "admin",
+            "administrator",
+            "superadmin",
+            "super_admin"
+          ]
+          || userProfile().get("userRole", "") in [
+            "admin",
+            "administrator",
+            "superadmin",
+            "super_admin"
+          ]
+        );
+    }
+
+    function isSalesperson() {
+      return activeUser()
+        && (
+          userProfile().get("role", "") in [
+            "salesgirl",
+            "salesperson",
+            "sales_rep"
+          ]
+          || userProfile().get("userRole", "") in [
+            "salesgirl",
+            "salesperson",
+            "sales_rep"
+          ]
+        );
+    }
+
+    // =====================================================
+    // 2. BRANCH ASSIGNMENT
+    // =====================================================
+
+    function hasAssignedBranch() {
+      return activeUser()
+        && (
+          userProfile().get("branchId", "") in [
+            "kara",
+            "ogidan"
+          ]
+          || (
+            !userProfile().keys().hasAny(["branchId"])
+            && userProfile().get("branch", "") in [
+              "kara",
+              "ogidan",
+              "Kara Shop",
+              "Ogidan Shop"
+            ]
+          )
+        );
+    }
+
+    function userBranchId() {
+      return userProfile().get("branchId", "") in [
+        "kara",
+        "ogidan"
+      ]
+        ? userProfile().branchId
+        : (
+          userProfile().get("branch", "") == "Kara Shop"
+            ? "kara"
+            : (
+              userProfile().get("branch", "") == "Ogidan Shop"
+                ? "ogidan"
+                : userProfile().get("branch", "")
+            )
+        );
+    }
+
+    function isOwnBranch(data) {
+      return isSalesperson()
+        && hasAssignedBranch()
+        && data.get("branchId", "") == userBranchId();
+    }
+
+    function hasValidBranch(data) {
+      return (
+        data.get("branchId", "") == "kara"
+        && data.get("branchName", "") == "Kara Shop"
+      ) || (
+        data.get("branchId", "") == "ogidan"
+        && data.get("branchName", "") == "Ogidan Shop"
+      );
+    }
+
+    function canReadBranchRecord(data) {
+      return isAdmin() || isOwnBranch(data);
+    }
+
+    // =====================================================
+    // 3. STAFF WORKING HOURS — NIGERIA TIME
+    //
+    // Nigeria = UTC+1.
+    // 07:00 UTC = 08:00 Nigeria time.
+    // 17:00 UTC = 18:00 Nigeria time.
+    //
+    // Staff business writes are allowed from 08:00 until
+    // immediately before 18:00 Nigeria time.
+    // =====================================================
+
+    function isWithinStaffHours() {
+      return request.time.hours() >= 7
+        && request.time.hours() < 17;
+    }
+
+    function canStaffWriteBusinessRecords() {
+      return isSalesperson()
+        && hasAssignedBranch()
+        && isWithinStaffHours();
+    }
+
+    // =====================================================
+    // 4. RECORD OWNERSHIP
+    // =====================================================
+
+    function canCreateOwnBranchRecord() {
+      return isSalesperson()
+        && hasAssignedBranch()
+        && request.resource.data.get("userId", "")
+          == request.auth.uid
+        && request.resource.data.get("branchId", "")
+          == userBranchId();
+    }
+
+    function validBusinessRecordIdentity() {
+      return request.resource.data.get("userId", "") == request.auth.uid
+        && request.resource.data.get("createdBy", "") == request.auth.uid
+        && request.resource.data.get("recordedByUid", "") == request.auth.uid
+        && hasValidBranch(request.resource.data)
+        && request.resource.data.get("createdAt", null) == request.time
+        && request.resource.data.get("recordedAt", null) == request.time
+        && request.resource.data.get("timestamp", null) == request.time;
+    }
+
+    function canCreateSalesOrConversion() {
+      return validBusinessRecordIdentity()
+        && (
+          isAdmin()
+          || (
+            canStaffWriteBusinessRecords()
+            && canCreateOwnBranchRecord()
+          )
+        );
+    }
+
+    function canCreateAdminInventoryRecord() {
+      return isAdmin()
+        && validBusinessRecordIdentity();
+    }
+
+    function canUpdateOwnRecord() {
+      return isSalesperson()
+        && hasAssignedBranch()
+        && resource.data.get("userId", "")
+          == request.auth.uid
+        && resource.data.get("branchId", "")
+          == userBranchId()
+        && request.resource.data.get("userId", "")
+          == request.auth.uid
+        && request.resource.data.get("branchId", "")
+          == userBranchId();
+    }
+
+    // =====================================================
+    // 5. OPENING STOCK VALIDATION
+    // =====================================================
+
+    function validOpeningStock() {
+      return request.resource.data.get("recordType", "")
+          == "opening_stock"
+        && request.resource.data.get("status", "")
+          == "completed"
+        && request.resource.data.get("productType", "") in [
+          "palm_oil",
+          "kuli_kuli",
+          "honey",
+          "Palm Oil",
+          "Kuli-Kuli Oil",
+          "Honey"
+        ]
+        && (
+          (
+            request.resource.data.get("quantity", 0) is number
+            && request.resource.data.get("quantity", 0) > 0
+          )
+          || (
+            request.resource.data.get("quantityLitres", 0) is number
+            && request.resource.data.get("quantityLitres", 0) > 0
+          )
+          || (
+            request.resource.data.get("quantityBottles", 0) is number
+            && request.resource.data.get("quantityBottles", 0) > 0
+          )
+          || (
+            request.resource.data.get("quantityKegs", 0) is number
+            && request.resource.data.get("quantityKegs", 0) > 0
+          )
+        )
+        && request.resource.data.get("affectsShopStock", false)
+          == true
+        && request.resource.data.get("affectsFarmStock", true)
+          == false
+        && request.resource.data.get("affectsSales", true)
+          == false
+        && request.resource.data.get("affectsProfit", true)
+          == false;
+    }
+
+    // =====================================================
+    // 6. STAFF DIRECTORY
+    //
+    // Authenticated, active users can read the directory.
+    // If login needs to read it before authentication, use
+    // a trusted backend instead of public credential reads.
+    // =====================================================
+
+    match /staffDirectory/{staffId} {
+      allow read: if activeUser();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 7. USER PROFILES
+    // =====================================================
+
+    match /users/{userId} {
+      allow read: if isSelf(userId) || isAdmin();
+
+      // Only the verified, specified admin can bootstrap
+      // their own profile. Existing admins can create others.
+      allow create: if (
+          isSelf(userId)
+          && request.auth.token.email
+            == "chukwuamakanwachukwu@outlook.com"
+          && request.auth.token.email_verified == true
+          && request.resource.data.get("role", "") in [
+            "admin",
+            "administrator",
+            "superadmin",
+            "super_admin"
+          ]
+          && request.resource.data.get("active", true) == true
+        )
+        || isAdmin();
+
+      allow update: if isAdmin()
+        || (
+          isSelf(userId)
+          && activeUser()
+          && request.resource.data.diff(resource.data)
+            .affectedKeys()
+            .hasOnly([
+              "displayName",
+              "fullName",
+              "name",
+              "email",
+              "updatedAt",
+              "lastSeenAt"
+            ])
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 8. STAFF LOCATIONS
+    // Document ID must be the staff member's Firebase UID.
+    // Only administrators can read location documents.
+    // =====================================================
+
+    function validStaffLocation(uid) {
+      return isSelf(uid)
+        && activeUser()
+        && isSalesperson()
+        && hasAssignedBranch()
+        && request.resource.data.get("userId", "")
+          == request.auth.uid
+        && request.resource.data.get("branchId", "")
+          == userBranchId()
+        && request.resource.data.get("latitude", null) is number
+        && request.resource.data.get("longitude", null) is number
+        && request.resource.data.latitude >= -90
+        && request.resource.data.latitude <= 90
+        && request.resource.data.longitude >= -180
+        && request.resource.data.longitude <= 180
+        && (
+          !request.resource.data.keys().hasAny(["accuracy"])
+          || request.resource.data.accuracy == null
+          || (
+            request.resource.data.accuracy is number
+            && request.resource.data.accuracy >= 0
+          )
+        )
+        && (
+          !request.resource.data.keys().hasAny(["heading"])
+          || request.resource.data.heading == null
+          || (
+            request.resource.data.heading is number
+            && request.resource.data.heading >= 0
+            && request.resource.data.heading < 360
+          )
+        )
+        && (
+          !request.resource.data.keys().hasAny(["speed"])
+          || request.resource.data.speed == null
+          || (
+            request.resource.data.speed is number
+            && request.resource.data.speed >= 0
+          )
+        )
+        && request.resource.data.keys().hasOnly([
+          "userId",
+          "branchId",
+          "branchName",
+          "staffId",
+          "staffName",
+          "latitude",
+          "longitude",
+          "accuracy",
+          "heading",
+          "speed",
+          "locationAddress",
+          "googleMapsUrl",
+          "updatedAt",
+          "capturedAt",
+          "recordedAt",
+          "createdAt",
+          "timestamp"
+        ]);
+    }
+
+    match /staffLocations/{uid} {
+      allow read: if isAdmin();
+
+      allow create: if validStaffLocation(uid);
+
+      allow update: if validStaffLocation(uid)
+        && request.resource.data.get("userId", "")
+          == resource.data.get("userId", "")
+        && request.resource.data.get("branchId", "")
+          == resource.data.get("branchId", "");
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 9. PRODUCTS
+    // =====================================================
+
+    match /products/{productId} {
+      allow read: if activeUser();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 10. SALES
+    // =====================================================
+
+    match /sales/{saleId} {
+      allow read: if canReadBranchRecord(resource.data);
+
+      // Administrators may record for either explicitly selected shop.
+      // Salespeople may only record their own assigned branch in business hours.
+      allow create: if canCreateSalesOrConversion();
+
+      allow update: if isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 11. SHOP OPENING STOCK
+    // =====================================================
+
+    match /shopOpeningStock/{openingId} {
+      allow read: if canReadBranchRecord(resource.data);
+
+      allow create: if canCreateAdminInventoryRecord();
+
+      allow update, delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 12. CONVERSIONS / OIL TURNING
+    // =====================================================
+
+    match /conversions/{conversionId} {
+      allow read: if canReadBranchRecord(resource.data);
+
+      allow create: if canCreateSalesOrConversion();
+
+      allow update: if isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 13. MATERIALS
+    // =====================================================
+
+    match /materials/{materialId} {
+      allow read: if canReadBranchRecord(resource.data);
+
+      allow create: if canCreateAdminInventoryRecord();
+
+      allow update: if isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 14. EXPENSES
+    // =====================================================
+
+    match /expenses/{expenseId} {
+      allow read: if canReadBranchRecord(resource.data);
+
+      allow create: if (
+          isAdmin()
+          && request.resource.data.get("userId", "") == request.auth.uid
+          && hasValidBranch(request.resource.data)
+        ) || (
+          canStaffWriteBusinessRecords()
+          && canCreateOwnBranchRecord()
+        );
+
+      allow update: if isAdmin()
+        || (
+          canStaffWriteBusinessRecords()
+          && canUpdateOwnRecord()
+        );
+
+      allow delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 15. BUSINESS SETTINGS
+    // =====================================================
+
+    match /settings/business {
+      allow read: if activeUser();
+      allow create, update, delete: if isAdmin();
+    }
+
+    // =====================================================
+    // 16. STAFF ATTENDANCE
+    //
+    // Client must send serverTimestamp() for timestamp.
+    // This is intended to match request.time.
+    // =====================================================
+
+    match /staffAttendance/{attendanceId} {
+      // Attendance is private to administrators.
+      allow read: if isAdmin();
+
+      // Staff can create only their own sign-in/sign-out record for the
+      // branch assigned in their protected users/{uid} profile.
+      // serverTimestamp() resolves to request.time in Firestore Rules.
+      allow create: if signedIn()
+        && activeUser()
+        && isSalesperson()
+        && hasAssignedBranch()
+        && request.resource.data.keys().hasAll([
+          "userId",
+          "staffId",
+          "staffName",
+          "branchId",
+          "branchName",
+          "eventType",
+          "timestamp"
+        ])
+        && request.resource.data.get("userId", "") == request.auth.uid
+        && request.resource.data.get("staffId", "")
+          == userProfile().get("staffId", "")
+        && request.resource.data.get("branchId", "") == userBranchId()
+        && request.resource.data.get("branchName", "")
+          == userProfile().get("branchName", "")
+        && request.resource.data.get("eventType", "")
+          in ["sign_in", "sign_out"]
+        && request.resource.data.get("timestamp", null) == request.time
+        && request.resource.data.keys().hasOnly([
+          "userId",
+          "staffId",
+          "staffName",
+          "branchId",
+          "branchName",
+          "eventType",
+          "timestamp",
+          "locationLatitude",
+          "locationLongitude",
+          "locationAccuracy"
+        ])
+        && (
+          !request.resource.data.keys().hasAny(["locationLatitude"])
+          || request.resource.data.locationLatitude is number
+        )
+        && (
+          !request.resource.data.keys().hasAny(["locationLongitude"])
+          || request.resource.data.locationLongitude is number
+        )
+        && (
+          !request.resource.data.keys().hasAny(["locationAccuracy"])
+          || request.resource.data.locationAccuracy is number
+        );
+
+      // Attendance records cannot be edited or removed by staff.
+      allow update, delete: if isAdmin();
+    }
+
+    /* =======================================================
+       STAFF MESSAGES TO ADMIN
+    ======================================================= */
+
+    match /staffMessages/{messageId} {
+      // Only active administrators can read reports from staff.
+      allow read: if isAdmin();
+
+      // Staff may report issues only for their own assigned shop.
+      allow create: if activeUser()
+        && isSalesperson()
+        && hasAssignedBranch()
+        && request.resource.data.get("userId", "") == request.auth.uid
+        && request.resource.data.get("branchId", "") == userBranchId()
+        && request.resource.data.get("branchName", "") == (userBranchId() == "kara" ? "Kara Shop" : "Ogidan Shop")
+        && request.resource.data.get("staffId", "") is string
+        && request.resource.data.get("staffName", "") is string
+        && request.resource.data.get("category", "") in ["product_finished", "low_stock", "missing_kegs", "missing_containers", "other"]
+        && request.resource.data.get("productName", "") is string
+        && request.resource.data.productName.size() <= 100
+        && request.resource.data.get("message", "") is string
+        && request.resource.data.message.size() <= 1000
+        && request.resource.data.get("status", "") == "open"
+        && request.resource.data.get("createdAt", null) == request.time
+        && request.resource.data.keys().hasOnly(["userId", "staffId", "staffName", "userRole", "branchId", "branchName", "category", "productName", "message", "status", "createdAt"]);
+
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["status", "resolvedAt", "resolvedBy"])
+        && request.resource.data.get("status", "") == "resolved"
+        && request.resource.data.get("resolvedBy", "") == request.auth.uid
+        && request.resource.data.get("resolvedAt", null) == request.time;
+      allow delete: if isAdmin();
+    }
+
+    /* =======================================================
+       BRANCH SALES NOTIFICATIONS
+    ======================================================= */
+
+    match /branchNotifications/{notificationId} {
+      // Admin-only live feed. Client writes are allowed only as part of the
+      // same atomic batch that creates the matching sale/conversion record.
+      allow read: if isAdmin();
+      allow create: if activeUser()
+        && request.resource.data.get("userId", "") == request.auth.uid
+        && request.resource.data.get("branchId", "") in ["kara", "ogidan"]
+        && request.resource.data.get("branchName", "") in ["Kara Shop", "Ogidan Shop"]
+        && request.resource.data.get("type", "") in ["sale_recorded", "oil_turned"]
+        && request.resource.data.get("read", false) == false
+        && request.resource.data.get("createdAt", null) == request.time
+        && (
+          (
+            request.resource.data.type == "sale_recorded"
+            && getAfter(/databases/$(database)/documents/sales/$(request.resource.data.recordId)).data.get("userId", "") == request.auth.uid
+            && getAfter(/databases/$(database)/documents/sales/$(request.resource.data.recordId)).data.get("branchId", "") == request.resource.data.branchId
+          ) || (
+            request.resource.data.type == "oil_turned"
+            && getAfter(/databases/$(database)/documents/conversions/$(request.resource.data.recordId)).data.get("userId", "") == request.auth.uid
+            && getAfter(/databases/$(database)/documents/conversions/$(request.resource.data.recordId)).data.get("branchId", "") == request.resource.data.branchId
+          )
+        );
+      allow update, delete: if isAdmin();
+    }
+    // =====================================================
+    // 17. DENY ALL OTHER DOCUMENTS
+    // =====================================================
+
+
+    match /adminPushTokens/{tokenId} {
+      allow create: if isAdmin()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.token is string
+        && request.resource.data.keys().hasOnly(['userId', 'token', 'updatedAt']);
+      allow update: if isAdmin()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.keys().hasOnly(['userId', 'token', 'updatedAt']);
+      allow read, delete: if isAdmin() && resource.data.userId == request.auth.uid;
+    }
+    match /inventoryLocks/{id} { allow read, write: if false; }
+    match /businessRequests/{id} { allow read, write: if false; }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,112 @@
+i  emulators: Starting emulators: firestore
+i  emulators: Detected demo project ID "demo-afubia", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail.
+i  firestore: downloading cloud-firestore-emulator-v1.22.0.jar...
+
+i  firestore: Firestore Emulator logging to firestore-debug.log
+✔  firestore: Firestore Emulator was started in standard edition.
+✔  firestore: Firestore Emulator UI websocket is running on 9150.
+i  Running script: node --test tests/firestore.rules.test.mjs
+TAP version 13
+# Subtest: anonymous user cannot read sales
+ok 1 - anonymous user cannot read sales
+  ---
+  duration_ms: 3966.099506
+  ...
+# Subtest: staff can read own branch sales
+ok 2 - staff can read own branch sales
+  ---
+  duration_ms: 158.453309
+  ...
+# Subtest: staff cannot read another branch
+ok 3 - staff cannot read another branch
+  ---
+  duration_ms: 56.549311
+  ...
+# Subtest: administrator can read branch records
+ok 4 - administrator can read branch records
+  ---
+  duration_ms: 58.591937
+  ...
+# Subtest: inactive administrator cannot read sales
+ok 5 - inactive administrator cannot read sales
+  ---
+  duration_ms: 56.657293
+  ...
+# [2026-10-23T14:14:41.034Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923911 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L379, false for 'create' @ L527, evaluation error at L381:24 for 'update' @ L381, false for 'update' @ L527, false for 'create' @ L379, false for 'create' @ L527
+# Subtest: direct sale writes cannot bypass callable
+ok 6 - direct sale writes cannot bypass callable
+  ---
+  duration_ms: 102.351037
+  ...
+# [2026-10-23T14:14:41.095Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923912 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L379, false for 'create' @ L527, evaluation error at L381:24 for 'update' @ L381, false for 'update' @ L527, false for 'create' @ L379, false for 'create' @ L527
+# Subtest: even administrator creation uses trusted write path
+ok 7 - even administrator creation uses trusted write path
+  ---
+  duration_ms: 60.260278
+  ...
+# [2026-10-23T14:14:41.137Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923913 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L405, false for 'create' @ L527, evaluation error at L407:24 for 'update' @ L407, false for 'update' @ L527, false for 'create' @ L405, false for 'create' @ L527
+# Subtest: direct oil turning writes are blocked
+ok 8 - direct oil turning writes are blocked
+  ---
+  duration_ms: 41.759281
+  ...
+# [2026-10-23T14:14:41.168Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923914 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# false for 'create' @ L419, false for 'create' @ L527, evaluation error at L421:24 for 'update' @ L421, false for 'update' @ L527, false for 'create' @ L419, false for 'create' @ L527
+# Subtest: staff cannot forge purchased materials
+ok 9 - staff cannot forge purchased materials
+  ---
+  duration_ms: 31.367363
+  ...
+# Subtest: staff cannot read admin notifications
+ok 10 - staff cannot read admin notifications
+  ---
+  duration_ms: 41.741211
+  ...
+# [2026-10-23T14:14:41.306Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923916 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# Property email is undefined on object. for 'create' @ L246, false for 'create' @ L527, evaluation error at L261:24 for 'update' @ L261, false for 'update' @ L527, false for 'update' @ L261, false for 'update' @ L527
+# Subtest: staff cannot grant themselves administrator role
+ok 11 - staff cannot grant themselves administrator role
+  ---
+  duration_ms: 97.154644
+  ...
+# Subtest: staff can record timestamped attendance
+ok 12 - staff can record timestamped attendance
+  ---
+  duration_ms: 67.732414
+  ...
+# [2026-10-23T14:14:41.429Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x33923918 error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L470:24 for 'create' @ L470, false for 'create' @ L527, evaluation error at L494:32 for 'update' @ L494, false for 'update' @ L527, false for 'create' @ L470, false for 'create' @ L527
+# Subtest: staff cannot forge attendance for another branch
+ok 13 - staff cannot forge attendance for another branch
+  ---
+  duration_ms: 53.611212
+  ...
+# Subtest: administrator can register their browser for push
+ok 14 - administrator can register their browser for push
+  ---
+  duration_ms: 45.373332
+  ...
+# [2026-10-23T14:14:41.529Z]  @firebase/firestore: Firestore (12.19.0): GrpcConnection RPC 'Write' stream 0x3392391a error. Code: 7 Message: 7 PERMISSION_DENIED: 
+# evaluation error at L513:24 for 'create' @ L513, false for 'create' @ L527, evaluation error at L517:24 for 'update' @ L517, false for 'update' @ L527, false for 'create' @ L513, false for 'create' @ L527
+# Subtest: salesperson cannot register for admin push
+ok 15 - salesperson cannot register for admin push
+  ---
+  duration_ms: 55.580105
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5218.316899
+✔  Script exited successfully (code 0)
+i  emulators: Shutting down emulators.
+i  firestore: Stopping Firestore Emulator
+i  hub: Stopping emulator hub
+i  logging: Stopping Logging Emulator

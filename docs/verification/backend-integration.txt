@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: callable saves opening stock and returns persisted document id
+ok 1 - callable saves opening stock and returns persisted document id
+  ---
+  duration_ms: 2624.647524
+  ...
+# Subtest: two simultaneous sales of the final bottle: exactly one commits
+ok 2 - two simultaneous sales of the final bottle: exactly one commits
+  ---
+  duration_ms: 1896.757651
+  ...
+# Subtest: out-of-stock rejection leaves database unchanged
+ok 3 - out-of-stock rejection leaves database unchanged
+  ---
+  duration_ms: 75.034832
+  ...
+# Subtest: conversion without purchased materials is rejected
+ok 4 - conversion without purchased materials is rejected
+  ---
+  duration_ms: 73.507997
+  ...
+# Subtest: materials save, conversion consumes them, and request retry is idempotent
+ok 5 - materials save, conversion consumes them, and request retry is idempotent
+  ---
+  duration_ms: 623.605951
+  ...
+# Subtest: newly turned packages can be sold and canonical totals are saved
+ok 6 - newly turned packages can be sold and canonical totals are saved
+  ---
+  duration_ms: 169.508799
+  ...
+# Subtest: forged stock bypass flags cannot sell more than available
+ok 7 - forged stock bypass flags cannot sell more than available
+  ---
+  duration_ms: 59.999216
+  ...
+# Subtest: Other products respect independent shop-specific unit balances
+ok 8 - Other products respect independent shop-specific unit balances
+  ---
+  duration_ms: 274.371531
+  ...
+# Subtest: sign-in and sign-out attendance generate admin notification records
+ok 9 - sign-in and sign-out attendance generate admin notification records
+  ---
+  duration_ms: 1534.844533
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7786.022478

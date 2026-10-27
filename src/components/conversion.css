@@ -1,0 +1,1725 @@
+/* =========================================================
+   AFUBIA FARMS
+   TURN OIL / CONVERSION
+   PREMIUM CREAM + GREEN + GOLD + BLUE DESIGN
+   ========================================================= */
+
+
+/* =========================================================
+   CONVERSION CONTAINER
+   ========================================================= */
+
+.conversion-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2.2rem;
+
+  margin: 0 auto;
+  padding: 2.8rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(252, 248, 237, 0.96)
+    );
+
+  border: 1px solid rgba(23, 37, 29, 0.09);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 30px 70px rgba(67, 57, 34, 0.13),
+    0 8px 25px rgba(67, 57, 34, 0.06);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TOP ACCENT
+   ========================================================= */
+
+.conversion-container::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b3d2e 0%,
+      #15965c 38%,
+      #d9a441 68%,
+      #1e4e8c 100%
+    );
+}
+
+
+/* =========================================================
+   SUBTLE CARD DECORATION
+   ========================================================= */
+
+.conversion-container::after {
+  content: "";
+
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  right: -135px;
+  bottom: -135px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(217, 164, 65, 0.10),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.conversion-heading {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.conversion-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  color: #a87520;
+
+  font-size: 0.68rem;
+
+  font-weight: 850;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.conversion-eyebrow::before,
+.conversion-eyebrow::after {
+  content: "";
+
+  width: 24px;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: #d9a441;
+}
+
+.conversion-eyebrow::before {
+  margin-right: 9px;
+}
+
+.conversion-eyebrow::after {
+  margin-left: 9px;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.conversion-title {
+  margin: 0.55rem 0 0;
+
+  color: #234b35;
+
+  font-size: clamp(2rem, 5vw, 2.6rem);
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.conversion-description {
+  max-width: 560px;
+
+  margin: 0.85rem auto 0;
+
+  color: #777267;
+
+  font-size: 0.9rem;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.conversion-form {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.15rem;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+
+  padding: 1rem;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf8,
+      #f8f4e9
+    );
+
+  border: 1px solid #e2dac8;
+
+  border-radius: 16px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.form-group:focus-within {
+  border-color: rgba(61, 118, 85, 0.45);
+
+  box-shadow:
+    0 0 0 4px rgba(61, 118, 85, 0.07);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FORM LABEL
+   ========================================================= */
+
+.form-group label {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 1rem;
+
+  color: #26352c;
+
+  font-size: 0.82rem;
+
+  font-weight: 800;
+}
+
+.form-group label small {
+  color: #8a938d;
+
+  font-size: 0.67rem;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.conversion-input {
+  width: 100%;
+
+  height: 50px;
+
+  border: 1px solid #d4cbb7;
+
+  border-radius: 11px;
+
+  padding: 0 1rem;
+
+  background: #faf7ed;
+
+  color: #20251f;
+
+  font-family: inherit;
+
+  font-size: 0.95rem;
+
+  font-weight: 650;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.conversion-input::placeholder {
+  color: #9b9588;
+
+  font-weight: 400;
+}
+
+.conversion-input:hover {
+  border-color: #bcae8e;
+
+  background: #fffdf8;
+}
+
+.conversion-input:focus {
+  background: #ffffff;
+
+  border-color: #3d7655;
+
+  box-shadow:
+    0 0 0 4px rgba(61, 118, 85, 0.10);
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+.conversion-input[type="number"] {
+  appearance: textfield;
+
+  -moz-appearance: textfield;
+}
+
+.conversion-input[type="number"]::-webkit-outer-spin-button,
+.conversion-input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+
+  -webkit-appearance: none;
+}
+
+
+/* =========================================================
+   PRODUCTION SUMMARY
+   ========================================================= */
+
+.conversion-summary {
+  grid-column: 1 / -1;
+
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(31, 91, 62, 0.14);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f9fcfa 0%,
+      #f1f7f3 55%,
+      #f7f3e8 100%
+    );
+
+  box-shadow:
+    0 12px 28px rgba(30, 78, 55, 0.07);
+}
+
+
+/* =========================================================
+   SUMMARY TOP ACCENT
+   ========================================================= */
+
+.conversion-summary::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b3d2e,
+      #15965c,
+      #d9a441,
+      #1e4e8c
+    );
+}
+
+
+/* =========================================================
+   SUMMARY HEADER
+   ========================================================= */
+
+.conversion-summary-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding:
+    1.25rem
+    1.35rem;
+
+  border-bottom:
+    1px solid rgba(35, 75, 53, 0.09);
+}
+
+.conversion-summary-header > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.22rem;
+
+  min-width: 0;
+}
+
+.conversion-summary-label {
+  color: #a87520;
+
+  font-size: 0.58rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+}
+
+.conversion-summary-header strong {
+  color: #234b35;
+
+  font-size: 1rem;
+
+  font-weight: 900;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   SUMMARY STATUS
+   ========================================================= */
+
+.conversion-summary-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+
+  padding:
+    0.45rem
+    0.7rem;
+
+  border:
+    1px solid rgba(33, 140, 88, 0.12);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  color: #547064;
+
+  font-size: 0.61rem;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+.conversion-summary-status-dot {
+  width: 7px;
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #218c58;
+
+  box-shadow:
+    0 0 0 3px rgba(33, 140, 88, 0.10);
+}
+
+
+/* =========================================================
+   SUMMARY GRID
+   ========================================================= */
+
+.conversion-summary-grid {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   SUMMARY ROW
+   ========================================================= */
+
+.conversion-summary-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 1.25rem;
+
+  min-width: 0;
+
+  padding:
+    1rem
+    1.35rem;
+
+  border-bottom:
+    1px solid rgba(35, 75, 53, 0.08);
+
+  transition:
+    background 0.2s ease;
+}
+
+.conversion-summary-row:hover {
+  background:
+    rgba(255, 255, 255, 0.48);
+}
+
+
+/* =========================================================
+   SUMMARY ROW LABEL
+   ========================================================= */
+
+.conversion-summary-row-label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.85rem;
+
+  min-width: 0;
+}
+
+.conversion-summary-number {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 31px;
+  height: 31px;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background:
+    #e5f0e9;
+
+  color: #176341;
+
+  font-size: 0.59rem;
+
+  font-weight: 900;
+
+  letter-spacing: 0.04em;
+}
+
+.conversion-summary-row-label > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.18rem;
+
+  min-width: 0;
+}
+
+.conversion-summary-title {
+  color: #263b30;
+
+  font-size: 0.8rem;
+
+  font-weight: 850;
+
+  line-height: 1.35;
+}
+
+.conversion-summary-row-label small {
+  color: #849087;
+
+  font-size: 0.64rem;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   SUMMARY VALUE
+   ========================================================= */
+
+.conversion-summary-value {
+  flex-shrink: 0;
+
+  color: #234b35;
+
+  font-size: 1rem;
+
+  font-weight: 900;
+
+  line-height: 1.2;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   REMAINING ROW
+   ========================================================= */
+
+.conversion-summary-remaining {
+  border-bottom: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(17, 107, 72, 0.055),
+      rgba(217, 164, 65, 0.045)
+    );
+}
+
+.conversion-summary-remaining
+  .conversion-summary-number {
+  background:
+    linear-gradient(
+      135deg,
+      #176341,
+      #1e4e8c
+    );
+
+  color: #ffffff;
+}
+
+.conversion-summary-value-highlight {
+  color: #116b48;
+
+  font-size: 1.08rem;
+}
+
+
+/* =========================================================
+   SUMMARY FOOTER
+   ========================================================= */
+
+.conversion-summary-footer {
+  display: flex;
+
+  align-items: center;
+
+  min-height: 38px;
+
+  padding:
+    0.7rem
+    1.35rem;
+
+  border-top:
+    1px solid rgba(35, 75, 53, 0.08);
+
+  background:
+    rgba(255, 255, 255, 0.45);
+
+  color: #7c877f;
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+.conversion-button {
+  position: relative;
+
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.65rem;
+
+  width: 100%;
+
+  height: 53px;
+
+  margin-top: 0.2rem;
+
+  overflow: hidden;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b3d2e 0%,
+      #15965c 55%,
+      #1e4e8c 100%
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 0.92rem;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 24px rgba(15, 122, 74, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.conversion-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  left: -100%;
+
+  width: 65%;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition:
+    left 0.55s ease;
+}
+
+.conversion-button:hover::before {
+  left: 135%;
+}
+
+.conversion-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 30px rgba(15, 122, 74, 0.27);
+}
+
+.conversion-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.conversion-button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+.conversion-button:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 4px rgba(61, 118, 85, 0.15),
+    0 12px 25px rgba(15, 122, 74, 0.20);
+}
+
+
+/* =========================================================
+   CONVERSION NOTIFICATION
+   ========================================================= */
+
+.conversion-notification {
+  position: fixed;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 9999;
+
+  width: min(
+    410px,
+    calc(100vw - 32px)
+  );
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.9rem;
+
+  padding: 1rem 1.05rem;
+
+  border-radius: 17px;
+
+  overflow: hidden;
+
+  animation:
+    conversionNotificationIn
+    0.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  box-shadow:
+    0 20px 45px rgba(35, 73, 54, 0.16),
+    0 6px 18px rgba(35, 73, 54, 0.08);
+
+  backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.conversion-notification-success {
+  background:
+    linear-gradient(
+      135deg,
+      #f1eee5 0%,
+      #e6eee8 100%
+    );
+
+  border:
+    1px solid rgba(17, 107, 72, 0.22);
+
+  color: #234936;
+}
+
+
+/* =========================================================
+   WARNING
+   ========================================================= */
+
+.conversion-notification-warning {
+  background:
+    linear-gradient(
+      135deg,
+      #f3eee1 0%,
+      #eee5cf 100%
+    );
+
+  border:
+    1px solid rgba(184, 134, 44, 0.25);
+
+  color: #6f551d;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.conversion-notification-error {
+  background:
+    linear-gradient(
+      135deg,
+      #f2e9e5 0%,
+      #eadfdb 100%
+    );
+
+  border:
+    1px solid rgba(143, 53, 53, 0.24);
+
+  color: #713333;
+}
+
+
+/* =========================================================
+   NOTIFICATION ICON
+   ========================================================= */
+
+.conversion-notification-icon {
+  flex: 0 0 auto;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 1.05rem;
+
+  font-weight: 900;
+}
+
+.conversion-notification-success
+  .conversion-notification-icon {
+  background: #dce8df;
+
+  color: #116b48;
+}
+
+.conversion-notification-warning
+  .conversion-notification-icon {
+  background: #eee5cf;
+
+  color: #a87520;
+}
+
+.conversion-notification-error
+  .conversion-notification-icon {
+  background: #f3e3df;
+
+  color: #8f3535;
+}
+
+
+/* =========================================================
+   NOTIFICATION CONTENT
+   ========================================================= */
+
+.conversion-notification-content {
+  min-width: 0;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0.18rem;
+}
+
+.conversion-notification-content strong {
+  font-size: 0.9rem;
+
+  font-weight: 800;
+
+  line-height: 1.3;
+}
+
+.conversion-notification-content span {
+  color: #716e64;
+
+  font-size: 0.76rem;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   NOTIFICATION CLOSE
+   ========================================================= */
+
+.conversion-notification-close {
+  flex: 0 0 auto;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(35, 73, 54, 0.07);
+
+  color: #716e64;
+
+  font-size: 1.05rem;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.conversion-notification-close:hover {
+  background:
+    rgba(35, 73, 54, 0.13);
+
+  color: #234936;
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   NOTIFICATION PROGRESS
+   ========================================================= */
+
+.conversion-notification-progress {
+  position: absolute;
+
+  left: 0;
+
+  bottom: 0;
+
+  width: 100%;
+
+  height: 3px;
+
+  transform-origin: left;
+
+  animation:
+    conversionNotificationProgress
+    4s
+    linear
+    forwards;
+}
+
+.conversion-notification-success
+  .conversion-notification-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #0b3d2e,
+      #15965c,
+      #b8862c
+    );
+}
+
+.conversion-notification-warning
+  .conversion-notification-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #a87520,
+      #d9a441
+    );
+}
+
+.conversion-notification-error
+  .conversion-notification-progress {
+  background:
+    linear-gradient(
+      90deg,
+      #8f3535,
+      #b85a5a
+    );
+}
+
+
+/* =========================================================
+   NOTIFICATION ANIMATIONS
+   ========================================================= */
+
+@keyframes conversionNotificationIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(-18px)
+      translateX(18px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      translateX(0)
+      scale(1);
+  }
+}
+
+@keyframes conversionNotificationProgress {
+  from {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .conversion-container {
+    max-width: 720px;
+
+    padding: 2.3rem;
+
+    border-radius: 25px;
+
+    gap: 2rem;
+  }
+
+  .conversion-title {
+    font-size: 2.2rem;
+  }
+
+  .conversion-form {
+    gap: 1rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 639px) {
+  .conversion-container {
+    width: 100%;
+
+    padding:
+      1.8rem
+      1rem
+      1.7rem;
+
+    border-radius: 22px;
+
+    gap: 1.7rem;
+  }
+
+  .conversion-eyebrow {
+    font-size: 0.6rem;
+  }
+
+  .conversion-eyebrow::before,
+  .conversion-eyebrow::after {
+    width: 17px;
+  }
+
+  .conversion-eyebrow::before {
+    margin-right: 7px;
+  }
+
+  .conversion-eyebrow::after {
+    margin-left: 7px;
+  }
+
+  .conversion-title {
+    font-size: 1.75rem;
+  }
+
+  .conversion-description {
+    max-width: 430px;
+
+    margin-top: 0.7rem;
+
+    font-size: 0.81rem;
+
+    line-height: 1.55;
+  }
+
+  .conversion-form {
+    grid-template-columns: 1fr;
+
+    gap: 0.8rem;
+  }
+
+  .form-group {
+    padding: 0.9rem;
+
+    border-radius: 14px;
+  }
+
+  .form-group label {
+    font-size: 0.78rem;
+  }
+
+  .form-group label small {
+    font-size: 0.63rem;
+  }
+
+  .conversion-input {
+    height: 49px;
+
+    font-size: 0.9rem;
+  }
+
+
+  /* =======================================================
+     MOBILE SUMMARY
+  ======================================================= */
+
+  .conversion-summary {
+    border-radius: 16px;
+  }
+
+  .conversion-summary-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 0.75rem;
+
+    padding:
+      1rem;
+  }
+
+  .conversion-summary-header strong {
+    font-size: 0.92rem;
+  }
+
+  .conversion-summary-status {
+    font-size: 0.58rem;
+  }
+
+  .conversion-summary-row {
+    align-items: flex-start;
+
+    gap: 0.8rem;
+
+    padding:
+      0.9rem 1rem;
+  }
+
+  .conversion-summary-row-label {
+    gap: 0.65rem;
+
+    flex: 1;
+
+    min-width: 0;
+  }
+
+  .conversion-summary-number {
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+
+    font-size: 0.55rem;
+  }
+
+  .conversion-summary-title {
+    font-size: 0.74rem;
+  }
+
+  .conversion-summary-row-label small {
+    font-size: 0.59rem;
+  }
+
+  .conversion-summary-value {
+    font-size: 0.88rem;
+  }
+
+  .conversion-summary-value-highlight {
+    font-size: 0.94rem;
+  }
+
+  .conversion-summary-footer {
+    padding:
+      0.65rem 1rem;
+
+    font-size: 0.58rem;
+  }
+
+
+  /* =======================================================
+     MOBILE BUTTON
+  ======================================================= */
+
+  .conversion-button {
+    height: 51px;
+
+    margin-top: 0.1rem;
+
+    font-size: 0.87rem;
+  }
+
+
+  /* =======================================================
+     MOBILE NOTIFICATION
+  ======================================================= */
+
+  .conversion-notification {
+    top: 14px;
+
+    right: 16px;
+    left: 16px;
+
+    width: auto;
+
+    padding:
+      0.85rem
+      0.9rem;
+
+    gap: 0.7rem;
+
+    border-radius: 15px;
+  }
+
+  .conversion-notification-icon {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 10px;
+
+    font-size: 0.95rem;
+  }
+
+  .conversion-notification-content strong {
+    font-size: 0.82rem;
+  }
+
+  .conversion-notification-content span {
+    font-size: 0.7rem;
+  }
+
+  .conversion-notification-close {
+    width: 25px;
+    height: 25px;
+
+    font-size: 0.95rem;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .conversion-container {
+    padding:
+      1.5rem
+      0.8rem;
+
+    border-radius: 19px;
+
+    gap: 1.45rem;
+  }
+
+  .conversion-title {
+    font-size: 1.55rem;
+  }
+
+  .conversion-description {
+    font-size: 0.75rem;
+  }
+
+  .form-group {
+    padding: 0.8rem;
+
+    border-radius: 13px;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+  }
+
+  .form-group label small {
+    font-size: 0.6rem;
+  }
+
+  .conversion-input {
+    height: 47px;
+
+    padding: 0 0.85rem;
+
+    font-size: 0.86rem;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE SUMMARY
+  ======================================================= */
+
+  .conversion-summary-header {
+    padding:
+      0.9rem;
+  }
+
+  .conversion-summary-row {
+    padding:
+      0.8rem 0.9rem;
+
+    gap: 0.55rem;
+  }
+
+  .conversion-summary-number {
+    width: 26px;
+    height: 26px;
+
+    font-size: 0.5rem;
+  }
+
+  .conversion-summary-title {
+    font-size: 0.69rem;
+  }
+
+  .conversion-summary-row-label small {
+    font-size: 0.55rem;
+  }
+
+  .conversion-summary-value {
+    font-size: 0.8rem;
+  }
+
+  .conversion-summary-value-highlight {
+    font-size: 0.86rem;
+  }
+
+  .conversion-summary-footer {
+    padding:
+      0.6rem 0.9rem;
+
+    font-size: 0.54rem;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE BUTTON
+  ======================================================= */
+
+  .conversion-button {
+    height: 49px;
+
+    border-radius: 11px;
+
+    font-size: 0.83rem;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE NOTIFICATION
+  ======================================================= */
+
+  .conversion-notification {
+    top: 11px;
+
+    right: 10px;
+    left: 10px;
+
+    width: auto;
+
+    padding:
+      0.75rem
+      0.8rem;
+
+    gap: 0.6rem;
+
+    border-radius: 13px;
+  }
+
+  .conversion-notification-icon {
+    width: 31px;
+    height: 31px;
+
+    border-radius: 9px;
+
+    font-size: 0.85rem;
+  }
+
+  .conversion-notification-content strong {
+    font-size: 0.76rem;
+  }
+
+  .conversion-notification-content span {
+    font-size: 0.65rem;
+  }
+
+  .conversion-notification-close {
+    width: 23px;
+    height: 23px;
+
+    font-size: 0.85rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 340px) {
+  .conversion-container {
+    padding:
+      1.3rem
+      0.7rem;
+  }
+
+  .conversion-title {
+    font-size: 1.4rem;
+  }
+
+  .conversion-eyebrow {
+    font-size: 0.55rem;
+  }
+
+  .conversion-description {
+    font-size: 0.7rem;
+  }
+
+  .form-group {
+    padding: 0.7rem;
+  }
+
+  .form-group label {
+    font-size: 0.71rem;
+  }
+
+  .conversion-input {
+    height: 45px;
+
+    font-size: 0.82rem;
+  }
+
+
+  /* =======================================================
+     VERY SMALL SUMMARY
+  ======================================================= */
+
+  .conversion-summary-header {
+    padding:
+      0.8rem;
+  }
+
+  .conversion-summary-row {
+    padding:
+      0.75rem 0.8rem;
+  }
+
+  .conversion-summary-number {
+    width: 24px;
+    height: 24px;
+
+    font-size: 0.47rem;
+  }
+
+  .conversion-summary-title {
+    font-size: 0.64rem;
+  }
+
+  .conversion-summary-row-label small {
+    font-size: 0.51rem;
+  }
+
+  .conversion-summary-value {
+    font-size: 0.74rem;
+  }
+
+  .conversion-summary-value-highlight {
+    font-size: 0.79rem;
+  }
+
+  .conversion-summary-footer {
+    padding:
+      0.55rem 0.8rem;
+
+    font-size: 0.5rem;
+  }
+
+
+  /* =======================================================
+     VERY SMALL BUTTON
+  ======================================================= */
+
+  .conversion-button {
+    height: 47px;
+
+    font-size: 0.8rem;
+  }
+
+
+  /* =======================================================
+     VERY SMALL NOTIFICATION
+  ======================================================= */
+
+  .conversion-notification {
+    top: 8px;
+
+    right: 7px;
+    left: 7px;
+
+    padding:
+      0.65rem
+      0.7rem;
+
+    gap: 0.5rem;
+  }
+
+  .conversion-notification-icon {
+    width: 29px;
+    height: 29px;
+
+    border-radius: 8px;
+
+    font-size: 0.8rem;
+  }
+
+  .conversion-notification-content strong {
+    font-size: 0.7rem;
+  }
+
+  .conversion-notification-content span {
+    font-size: 0.6rem;
+  }
+
+  .conversion-notification-close {
+    width: 21px;
+    height: 21px;
+
+    font-size: 0.8rem;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .form-group,
+  .conversion-input,
+  .conversion-button,
+  .conversion-button::before,
+  .conversion-notification,
+  .conversion-notification-progress,
+  .conversion-notification-close,
+  .conversion-summary-row {
+    animation: none;
+
+    transition: none;
+  }
+}
+
+/* Administrator branch selection: shared Afubia Farms styling */
+.branch-choice-panel {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 16px 18px;
+  border: 1px solid #cfe1d5;
+  border-left: 4px solid #0f7a4a;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f4faf6, #f3f7fb);
+  box-shadow: 0 6px 20px rgba(11, 61, 46, .06);
+}
+.branch-choice-panel label {
+  color: #0b3d2e;
+  font-weight: 800;
+}
+.branch-choice-panel select {
+  width: 100%;
+  max-width: 420px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #b8d1c2;
+  border-radius: 10px;
+  background: #fff;
+  color: #18352a;
+  font: inherit;
+}
+.branch-choice-panel small { color: #5f7168; line-height: 1.5; }

@@ -1,0 +1,900 @@
+/* =========================================================
+   AFUBIA FARMS
+   SALESGIRL DASHBOARD
+   PREMIUM CREAM + GREEN + GOLD + BLUE THEME
+   ========================================================= */
+
+.dashboard-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 900px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2.25rem;
+
+  margin: 0 auto;
+  padding: 2.8rem;
+
+  /* MAIN DASHBOARD CARD */
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(252, 248, 237, 0.96)
+    );
+
+  border: 1px solid rgba(23, 37, 29, 0.09);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 30px 70px rgba(67, 57, 34, 0.13),
+    0 8px 25px rgba(67, 57, 34, 0.06);
+
+  text-align: center;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   DASHBOARD TOP ACCENT
+   ========================================================= */
+
+.dashboard-container::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #0b3d2e 0%,
+      #15965c 38%,
+      #d9a441 68%,
+      #1e4e8c 100%
+    );
+}
+
+/* =========================================================
+   SUBTLE DASHBOARD DECORATION
+   ========================================================= */
+
+.dashboard-container::after {
+  content: "";
+
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -130px;
+  bottom: -130px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(217, 164, 65, 0.10),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.dashboard-heading {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  margin-bottom: 0.75rem;
+
+  color: #a87520;
+
+  font-size: 0.68rem;
+  font-weight: 850;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.dashboard-eyebrow::before,
+.dashboard-eyebrow::after {
+  content: "";
+
+  width: 24px;
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: #d9a441;
+}
+
+.dashboard-eyebrow::before {
+  margin-right: 9px;
+}
+
+.dashboard-eyebrow::after {
+  margin-left: 9px;
+}
+
+/* =========================================================
+   DASHBOARD TITLE
+   ========================================================= */
+
+.dashboard-title {
+  margin: 0;
+
+  color: #234b35;
+
+  font-size: clamp(2rem, 5vw, 2.6rem);
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+}
+
+/* =========================================================
+   DASHBOARD SUBTITLE
+   ========================================================= */
+
+.dashboard-subtitle {
+  max-width: 560px;
+
+  margin: 0.85rem 0 0;
+
+  color: #777267;
+
+  font-size: 0.9rem;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.dashboard-actions {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 1.25rem;
+}
+
+/* =========================================================
+   ACTION CARD
+   ========================================================= */
+
+.dashboard-action {
+  position: relative;
+
+  width: 100%;
+  min-height: 155px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 1rem;
+
+  padding: 1.35rem;
+
+  overflow: hidden;
+
+  border: 1px solid transparent;
+
+  border-radius: 19px;
+
+  text-align: left;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.dashboard-action:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-action:active {
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   ACTION CARD DECORATION
+   ========================================================= */
+
+.dashboard-action::before {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -80px;
+  bottom: -85px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.dashboard-action:hover::before {
+  transform: scale(1.15);
+}
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.action-icon {
+  position: relative;
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  width: 66px;
+  height: 66px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 17px;
+
+  font-size: 1.8rem;
+
+  box-shadow:
+    0 8px 18px rgba(23, 37, 29, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.action-icon img {
+  width: 80px;
+  height: 80px;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 18px;
+}
+
+.dashboard-action:hover .action-icon {
+  transform: scale(1.05);
+
+  box-shadow:
+    0 11px 23px rgba(23, 37, 29, 0.12);
+}
+
+/* =========================================================
+   ACTION CONTENT
+   ========================================================= */
+
+.action-content {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.3rem;
+
+  flex: 1;
+}
+
+.action-content strong {
+  color: inherit;
+
+  font-size: 1rem;
+
+  font-weight: 850;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.02em;
+}
+
+.action-content span {
+  color: inherit;
+
+  font-size: 0.74rem;
+
+  line-height: 1.5;
+
+  opacity: 0.72;
+}
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.action-arrow {
+  position: relative;
+  z-index: 2;
+
+  flex-shrink: 0;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.dashboard-action:hover .action-arrow {
+  transform: translateX(5px);
+}
+
+/* =========================================================
+   TURN OIL
+   ========================================================= */
+
+.dashboard-action-conversion {
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf0 0%,
+      #f8f1df 55%,
+      #f3e6c8 100%
+    );
+
+  border-color: #ead9b2;
+
+  color: #4e3a17;
+
+  box-shadow:
+    0 8px 24px rgba(168, 117, 32, 0.07);
+}
+
+.dashboard-action-conversion::before {
+  background:
+    radial-gradient(
+      circle,
+      rgba(217, 164, 65, 0.20),
+      transparent 70%
+    );
+}
+
+.dashboard-action-conversion .action-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #f1d99d,
+      #e5c77d
+    );
+
+  color: #6f4e16;
+}
+
+.dashboard-action-conversion .action-arrow {
+  color: #a87520;
+
+  background: rgba(217, 164, 65, 0.13);
+}
+
+/* =========================================================
+   SALES
+   ========================================================= */
+
+.dashboard-action-sales {
+  background:
+    linear-gradient(
+      145deg,
+      #f3f9f5 0%,
+      #eaf2ed 55%,
+      #e3edf3 100%
+    );
+
+  border-color: #ccded2;
+
+  color: #20392a;
+
+  box-shadow:
+    0 8px 24px rgba(31, 84, 57, 0.07);
+}
+
+.dashboard-action-sales::before {
+  background:
+    radial-gradient(
+      circle,
+      rgba(30, 78, 140, 0.13),
+      transparent 70%
+    );
+}
+
+.dashboard-action-sales .action-icon {
+  background:
+    linear-gradient(
+      145deg,
+      #d3e7da,
+      #bfd9ca
+    );
+
+  color: #24543a;
+}
+
+.dashboard-action-sales .action-arrow {
+  color: #356b4b;
+
+  background: rgba(53, 107, 75, 0.10);
+}
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+.dashboard-action:focus-visible {
+  outline: none;
+
+  box-shadow:
+    0 0 0 4px rgba(61, 118, 85, 0.15),
+    0 15px 30px rgba(23, 37, 29, 0.12);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .dashboard-container {
+    max-width: 720px;
+
+    padding: 2.3rem;
+
+    border-radius: 25px;
+
+    gap: 2rem;
+  }
+
+  .dashboard-title {
+    font-size: 2.2rem;
+  }
+
+  .dashboard-actions {
+    gap: 1rem;
+  }
+
+  .dashboard-action {
+    min-height: 145px;
+
+    padding: 1.15rem;
+  }
+
+  .action-icon {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 15px;
+  }
+
+  .action-icon img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 639px) {
+  .dashboard-container {
+    width: 100%;
+
+    padding: 1.8rem 1rem 1.7rem;
+
+    border-radius: 22px;
+
+    gap: 1.7rem;
+  }
+
+  .dashboard-eyebrow {
+    margin-bottom: 0.6rem;
+
+    font-size: 0.6rem;
+  }
+
+  .dashboard-eyebrow::before,
+  .dashboard-eyebrow::after {
+    width: 17px;
+  }
+
+  .dashboard-eyebrow::before {
+    margin-right: 7px;
+  }
+
+  .dashboard-eyebrow::after {
+    margin-left: 7px;
+  }
+
+  .dashboard-title {
+    font-size: 1.75rem;
+  }
+
+  .dashboard-subtitle {
+    max-width: 430px;
+
+    margin-top: 0.7rem;
+
+    font-size: 0.81rem;
+
+    line-height: 1.55;
+  }
+
+  /* Keep cards clean and compact */
+  .dashboard-actions {
+    grid-template-columns: 1fr;
+
+    gap: 0.8rem;
+  }
+
+  .dashboard-action {
+    min-height: 105px;
+
+    padding: 0.95rem;
+
+    gap: 0.8rem;
+
+    border-radius: 16px;
+  }
+
+  .action-icon {
+    width: 53px;
+    height: 53px;
+
+    border-radius: 13px;
+  }
+
+  .action-icon img {
+    width: 62px;
+    height: 62px;
+
+    border-radius: 13px;
+  }
+
+  .action-content {
+    gap: 0.25rem;
+  }
+
+  .action-content strong {
+    font-size: 0.9rem;
+  }
+
+  .action-content span {
+    font-size: 0.68rem;
+
+    line-height: 1.4;
+  }
+
+  .action-arrow {
+    width: 29px;
+    height: 29px;
+
+    font-size: 1rem;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+  .dashboard-container {
+    padding: 1.5rem 0.8rem;
+
+    border-radius: 19px;
+
+    gap: 1.45rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.55rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.76rem;
+  }
+
+  .dashboard-action {
+    min-height: 98px;
+
+    padding: 0.8rem;
+
+    gap: 0.65rem;
+
+    border-radius: 14px;
+  }
+
+  .action-icon {
+    width: 47px;
+    height: 47px;
+
+    border-radius: 11px;
+  }
+
+  .action-icon img {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 11px;
+  }
+
+  .action-content strong {
+    font-size: 0.84rem;
+  }
+
+  .action-content span {
+    font-size: 0.63rem;
+  }
+
+  .action-arrow {
+    width: 27px;
+    height: 27px;
+
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 340px) {
+  .dashboard-container {
+    padding: 1.3rem 0.7rem;
+  }
+
+  .dashboard-title {
+    font-size: 1.4rem;
+  }
+
+  .dashboard-eyebrow {
+    font-size: 0.55rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.71rem;
+  }
+
+  .dashboard-action {
+    padding: 0.7rem;
+  }
+
+  .action-icon {
+    width: 43px;
+    height: 43px;
+  }
+
+  .action-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .action-content strong {
+    font-size: 0.79rem;
+  }
+
+  .action-content span {
+    font-size: 0.59rem;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-action,
+  .action-icon,
+  .action-arrow,
+  .dashboard-action::before {
+    transition: none;
+  }
+}
+.staff-location-status {
+  margin: 18px 0;
+  padding: 14px 16px;
+  border: 1px solid #d1e7dc;
+  border-radius: 12px;
+  background: #f0f8f4;
+  color: #174c36;
+  overflow-wrap: anywhere;
+}
+
+.staff-location-status strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.staff-location-status p {
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.staff-location-status small {
+  display: block;
+  line-height: 1.5;
+  color: #46685a;
+}
+
+.dashboard-action:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+.dashboard-signout-button {
+  margin: 0.25rem 0 1rem;
+  border: 1px solid #d9a8a2;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  background: #fff8f7;
+  color: #8f3028;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+.dashboard-signout-button:hover:not(:disabled) {
+  background: #fbe9e6;
+}
+.dashboard-signout-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* Staff-facing records notice: calm, clear, and mobile friendly. */
+.staff-location-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid #d4e5dc;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f3faf6 0%, #eef5fb 100%);
+  box-shadow: 0 5px 18px rgba(11, 61, 46, 0.045);
+}
+
+.staff-records-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 11px;
+  background: #dcefe3;
+  color: #0f7a4a;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.staff-records-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.staff-records-copy strong {
+  display: block;
+  margin: 1px 0 7px;
+  color: #0b3d2e;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.staff-records-copy p {
+  margin: 0;
+  color: #4b6559;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.dashboard-location-enable {
+  max-width: 100%;
+  margin-top: 12px;
+  border: 1px solid #b7d5c3;
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: #fff;
+  color: #0f6542;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 750;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.dashboard-location-enable:hover {
+  background: #e9f5ed;
+}
+
+.dashboard-location-enable:focus-visible {
+  outline: 3px solid rgba(30, 78, 140, 0.35);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .staff-location-status {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .staff-records-icon {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+
+  .staff-records-copy strong {
+    font-size: 0.85rem;
+  }
+
+  .staff-records-copy p {
+    font-size: 0.76rem;
+  }
+
+  .dashboard-location-enable {
+    width: 100%;
+  }
+}
